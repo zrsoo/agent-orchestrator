@@ -337,3 +337,112 @@ Both repositories are committed only after their verification gates. The deliver
 SHAs and final clean-status evidence after commit creation; the report inside each
 commit records the verified implementation and inventories without a circular
 self-referential commit hash. No remote push is performed.
+
+## Agent-instruction migration addendum
+
+The additional instruction-audit requirement was completed after the extraction
+commits. The root Factory `AGENTS.md` had been read before extraction; the complete
+nested/`.agents` classification below was performed in this addendum against the
+preserved pre-extraction revision `51b7e53a1bb5e0de6d79df36f251127bac949d26` and
+post-cleanup revision `6af74999a5f4d6da0d3c49f9888422f08d8d17a1`. This does not claim
+that a full instruction audit occurred before the original migration.
+
+Audit covered tracked pre-extraction instruction/configuration paths, the current
+working tree including hidden project configuration, ancestor instruction paths,
+the root/nested AGENTS inventory, both `.agents` skills, the backlog index/template
+and all six proposals, the master plan, relevant generic milestone contracts and
+the consumer task brief. Generated dependencies/caches/builds and archived runtime
+worktrees were excluded from active project instruction discovery. No ancestor
+`AGENTS.md`, nested `AGENTS.md`, alternative assistant instruction file, or project
+`.codex`, `.claude`, `.cursor`, `.github`, `.vscode` or `.windsurf` agent configuration
+was found. The only `.agents` files are the two skills classified below.
+
+Factory's root AGENTS, backlog index/template and both skills match their original
+pre-extraction raw-byte SHA-256 hashes and remain unchanged by this addendum.
+No account credentials, user-profile configuration or provider sessions are copied.
+
+New standalone `AGENTS.md` preserves every one of the 16 root instruction bullets,
+with milestone/plan and debt-link requirements adapted to local objectives and a
+self-contained `improvements/` index/template. All useful status, priority, stable-ID,
+source/dependency, compatibility, acceptance, evidence, closure and authorization
+conventions are retained. There is no requirement for an external master plan or
+milestone tree and no new approval gate for already authorized work.
+
+Two orchestrator-owned proposals, IMP-002 and IMP-003, are adapted under the local
+backlog with their IDs, proposed/deferred statuses, priorities and technical
+acceptance scope preserved. The former consumer-owned historical-gate dependency
+becomes an explicit assessment of local verification coupling; it is not a missing
+local IMP-001 link or permission to implement cleanup. Their original proposals
+remain in Factory for consumer/history context. No backlog feature is implemented.
+Both Roblox skills, product milestones and consumer-owned proposals stay in Factory.
+
+Classification: **1** generic/applicable and migrated; **2** applicable but coupled
+to Factory and adapted; **3** consumer/Roblox-specific, retained in Factory and
+excluded from standalone instructions. Root bullet numbers follow their original
+order (planning 1-5, documentation 6-14, reporting 15-16). The mapping covers whole
+skill procedures and explicitly separates their generic evidence clauses.
+
+| Source instruction or configuration | Classification / action | Destination | Reason |
+| --- | --- | --- | --- |
+| `AGENTS.md bullet 1` - Plan carefully, then execute precisely. Planning, implementation, testing, and documentation all require technical accuracy. | 1 - generic; migrated | `AGENTS.md#planning-and-execution` | Technical accuracy retained verbatim. |
+| `AGENTS.md bullet 2` - Produce the shortest complete plan: concrete steps, dependencies, interfaces, expected artifacts, verification, and acceptance criteria. Do not omit essential details to make it shorter. | 1 - generic; migrated | `AGENTS.md#planning-and-execution` | Complete concise planning retained verbatim. |
+| `AGENTS.md bullet 3` - Follow the current milestone's plan and acceptance criteria. Complete every required step; validate actual outputs. | 2 - adapted; adapted | `AGENTS.md#planning-and-execution` | Milestone-specific authority becomes the assigned objective and its accepted plan/criteria; no external milestone tree is required. |
+| `AGENTS.md bullet 4` - Work autonomously, diagnose and fix ordinary failures, and report genuine blockers with the next needed action. | 1 - generic; migrated | `AGENTS.md#planning-and-execution` | Autonomous execution, ordinary failure repair and actionable blockers retained verbatim. |
+| `AGENTS.md bullet 5` - Prefer simple, modular, testable solutions; reuse existing infrastructure. No unfinished TODOs or placeholders in completed work. | 1 - generic; migrated | `AGENTS.md#planning-and-execution` | Simple modular solutions, reuse and no unfinished deliverables retained verbatim. |
+| `AGENTS.md bullet 6` - Minimal, precise, implementation-focused. No fluff. | 1 - generic; migrated | `AGENTS.md#documentation` | Concise implementation-focused documentation retained verbatim. |
+| `AGENTS.md bullet 7` - Include only material needed to plan, implement, run, test, debug, or maintain the system. | 1 - generic; migrated | `AGENTS.md#documentation` | Only operationally useful documentation retained verbatim. |
+| `AGENTS.md bullet 8` - Prefer exact commands, schemas, interfaces, ordered steps, and acceptance tests over narrative. | 1 - generic; migrated | `AGENTS.md#documentation` | Exact commands, contracts and acceptance checks retained verbatim. |
+| `AGENTS.md bullet 9` - Omit motivational prose, generic explanations, redundant caveats, and repeated policy commentary. | 1 - generic; migrated | `AGENTS.md#documentation` | No redundant prose or policy commentary retained verbatim. |
+| `AGENTS.md bullet 10` - Keep one canonical source for each detail; link instead of copying. | 1 - generic; migrated | `AGENTS.md#documentation` | One canonical source and links instead of duplicated scope retained verbatim. |
+| `AGENTS.md bullet 11` - Avoid creating new documents unless they materially help execution. | 1 - generic; migrated | `AGENTS.md#documentation` | Create documents only when materially useful, retained verbatim. |
+| `AGENTS.md bullet 12` - When editing docs, cut repetition without sacrificing requirements or accuracy. | 1 - generic; migrated | `AGENTS.md#documentation` | Reduce repetition without losing accuracy, retained verbatim. |
+| `AGENTS.md bullet 13` - Before finishing, remove unnecessary text and confirm every instruction is actionable. | 1 - generic; migrated | `AGENTS.md#documentation` | Actionable final documentation retained; explicit local-link checking added. |
+| `AGENTS.md bullet 14` - Record nonblocking technical debt, fixes and deferred enhancements in `improvements/` using the improvement template; update `improvements/README.md` and link the canonical item from the master plan when relevant. Do not implement backlog items without an assigned objective or explicit approval. | 2 - adapted; adapted | `AGENTS.md#improvements-and-technical-debt` | Local improvements index/template retained; master-plan link becomes an affected local task/plan/report. Authorization boundary preserved, with no new approval step for already assigned work. |
+| `AGENTS.md bullet 15` - State what changed, what was actually tested, its results, and any blockers. | 1 - generic; migrated | `AGENTS.md#verification-and-reporting` | Changed scope, actual checks, results and blockers retained; distinguish historical/live evidence. |
+| `AGENTS.md bullet 16` - Never claim execution, validation, or completion without evidence. | 1 - generic; migrated | `AGENTS.md#verification-and-reporting` | Evidence required for execution/validation/completion claims; secret/runtime exclusions made explicit. |
+| `improvements/README.md opening paragraphs` - Canonical backlog, historical evidence, stable IDs, component assignment, statuses, priorities and non-authorization | 2 - adapted; adapted | `improvements/README.md` | Keep all useful workflow metadata; replace Factory milestone folders and schedules with local components and observable conditions. Preserve migrated IDs/statuses/priorities. |
+| `improvements/README.md working agreement 1` - One actionable spec per ID; link scheduling context without duplicating scope | 2 - adapted; adapted | `improvements/README.md#working-agreement` | An affected local task/plan/report replaces the mandatory Factory master-plan context. |
+| `improvements/README.md working agreement 2` - Source, dependencies, impacted files, measurable acceptance, verification and backward compatibility | 1 - generic; migrated | `improvements/README.md#working-agreement` | Generic engineering completeness retained. |
+| `improvements/README.md working agreement 3` - Close only with implementation/verification evidence; preserve issue history | 1 - generic; migrated | `improvements/README.md#working-agreement` | Generic evidence and lifecycle convention retained. |
+| `improvements/README.md working agreement 4` - Maintain sequential execution unless explicitly approved work changes it | 1 - generic; migrated | `improvements/README.md#working-agreement` | Assigned objective remains the authority; no concurrency feature added. |
+| `improvements/TEMPLATE.md metadata` - ID, status, priority, component, target, dependencies and source | 2 - adapted; adapted | `improvements/TEMPLATE.md` | Replace M-1/M0/M1/M2/M8 component choices and milestone targets with orchestrator components and local prerequisites. |
+| `improvements/TEMPLATE.md Problem / Proposed change / Impacted files / Acceptance criteria / Verification / Notes and boundaries` - Evidence versus proposals; minimal scope; impacted files; measurable checks; compatibility; risks and unrun requirements | 1 - generic; migrated | `improvements/TEMPLATE.md` | Every specification section retained; examples are template fields, not missing file dependencies. |
+| `improvements/M-1/IMP-002-git-task-regression-attribution.md` - Proposed task/commit/validator provenance, all five acceptance criteria and Git fault/restart verification | 2 - adapted; adapted; not implemented | `improvements/IMP-002-git-task-regression-attribution.md` | Keep ID, P0, proposed status and complete technical scope. Rebase file links locally. Express the original consumer-owned IMP-001 prerequisite as assessment of current local verification coupling; no missing local dependency or implicit authorization. |
+| `improvements/M-1/IMP-003-plan-level-orchestration.md` - Deferred plan/objective/task DAG proposal, all four acceptance criteria and deterministic recovery verification | 2 - adapted; adapted; not implemented | `improvements/IMP-003-plan-level-orchestration.md` | Keep ID, P2, deferred status, sequential compatibility and scope. Replace M3/M4 trigger/master plan with measured operational handoff overhead and local contracts. |
+| `improvements/shared/IMP-001-remove-permanent-hash-gates.md` - Factory M1/M2 historical snapshot cleanup proposal | 3 - consumer-specific; retained; excluded from standalone backlog | `Roblox Factory unchanged` | Its remaining implementation targets Factory validators/evidence. Generic historical-evidence versus current-verification discipline is retained separately; this requirement does not authorize the cleanup feature. |
+| `improvements/M2/IMP-004-evidence-only-m3-handoff.md; improvements/M2/IMP-006-portable-retained-replay-validation.md; improvements/M8/IMP-005-parallel-portfolio-execution.md` - Research handoff/replay portability and parallel game portfolio proposals | 3 - consumer-specific; retained; excluded from standalone backlog | `Roblox Factory unchanged` | These are consumer product/research scopes, not standalone agent instructions. No research pipeline or concurrency feature is imported. |
+| `planning/MASTER_PLAN.md architecture: source of truth, task contract and runtime responsibilities` - Versioned code/plans/config/fixtures; preserve provider-neutral task/session/quota/validation contracts | 2 - adapted; adapted | `AGENTS.md#planning-and-execution; AGENTS.md#verification-and-reporting; existing README.md and docs/task-contract.md` | Keep generic boundaries and existing contracts; exclude Rojo/Studio source-reconciliation specifics. Runtime behavior is unchanged. |
+| `planning/MASTER_PLAN.md execution model, immediate/deferred engineering and decision checkpoints` - Sequential operation, autonomous day-to-day repair and proposed/deferred work boundaries | 2 - adapted; adapted | `AGENTS.md; improvements/README.md and IMP-002/IMP-003` | Preserve sequential scheduler and authorization boundaries without importing game-selection/release checkpoints or Factory milestone scheduling. |
+| `planning/MASTER_PLAN.md skills roadmap: storage convention` - Skills are scoped versioned procedures with useful references/helpers, not supervisors | 1 - generic; migrated | `AGENTS.md#improvements-and-technical-debt` | Retain a generic optional local skill convention; no skill is created or required. |
+| `planning/MASTER_PLAN.md goals, product roles, M0/M2-M8 milestones, skill catalog, Factory target layout, external Roblox references` - Research/design/game build/QA/release/portfolio instructions and product decision gates | 3 - consumer-specific; retained; excluded | `Roblox Factory unchanged` | Product-specific workflow is not a dependency of generic orchestration. The historical master plan remains in Factory. |
+| `planning/M-1/EXECUTION_PLAN.md generic contracts and O0-O6 verification; planning/M1/EXECUTION_PLAN.md; planning/M1/INTEGRATION_PLAN.md; planning/M1/VERIFICATION.md` - Preserve task/DAG/provider/session/quota/control/restart/dashboard/ownership contracts; validate actual outputs and report host-specific gaps | 2 - adapted; adapted; historical plans retained | `AGENTS.md#planning-and-execution; AGENTS.md#verification-and-reporting; existing local usage/task/operations guides` | Instructions point to the canonical current local contracts and tests; original milestone plans, old commands and recorded counts are historical, not mandatory external planning files. |
+| `planning/M0/TASK_PROMPT.md working rules 6/9 and technical guardrails; playtester failure/evidence clauses; research-skill evidence/failure clauses` - Record actual evidence, report unpassed gates/blockers accurately, preserve recovery identities, never commit credentials | 1 - generic; migrated as general standards | `AGENTS.md#verification-and-reporting` | Generic truthfulness, state preservation and credential hygiene are retained without adopting the surrounding Roblox workflow or its engine-specific retry limits. |
+| `planning/M0/TASK_PROMPT.md remaining working rules/deliverable/phase schema; planning/M0 and planning/M2 product objectives` - Studio identity, source/build/gameplay/purchases/private publication, game replays and research deliverables | 3 - consumer-specific; retained; excluded | `Roblox Factory unchanged` | Assigned historical consumer tasks do not become global instructions for the standalone repository. |
+| `.agents/skills/roblox-autonomous-playtester/SKILL.md` - All trigger/setup/scenario, exact staging IDs, build/Studio/window assertions, gameplay/hostile remote/purchase tests, screenshots, native cleanup, output/benchmark schema and three-attempt failure procedure | 3 - consumer-specific; retained byte-identical; skill excluded | `Roblox Factory .agents unchanged` | Entire executable procedure requires Token Trail, Studio MCP and Factory fixtures. Generic evidence/recovery principles are already migrated as standards above; no staging IDs, tool requirements or retry cap are transplanted. |
+| `.agents/skills/roblox-market-intelligence/SKILL.md` - All trigger/read-first contracts, numbered research steps 1-7, cohort/metric/catalog/history/hypothesis constraints, replay/evidence commands and worked-capture references | 3 - consumer-specific; retained byte-identical; skill excluded | `Roblox Factory .agents unchanged` | The procedure depends on the consumer market-intelligence CLI, M2 data and M3 product hypotheses. Generic truthful evidence/reporting principles are retained above; no collector, research metric or skill dependency is imported. |
+| `factory.yaml and setup/provider configuration` - Codex selection/default model/execution settings; account/tool prerequisites | 2 - adapted; existing extraction retained; consumer configuration not promoted into agent instructions | `examples/factory.yaml; existing README.md and docs/migration.md; Factory factory.yaml unchanged` | Generic sample/defaults already migrated. Keep consumer configuration explicit and account/MCP/machine settings outside project instructions/Git. |
+| `.gitignore runtime/private/generated exclusions` - Exclude virtual environments, caches, credentials, database/runtime state and generated machine outputs | 1 - generic; existing extraction retained; made explicit | `.gitignore; AGENTS.md#verification-and-reporting` | Generic hygiene preserved; Roblox binary/tool exclusions remain consumer-owned. |
+
+Instruction-only additions: `AGENTS.md`, `improvements/README.md`,
+`improvements/TEMPLATE.md`, `improvements/IMP-002-git-task-regression-attribution.md`
+and `improvements/IMP-003-plan-level-orchestration.md`. Existing engineering reports
+receive this addendum; original test results and inventories describe their original
+extraction commits and are not retroactively relabelled.
+
+Validation for this addendum: all local Markdown links/anchors in AGENTS and the
+four backlog files resolve within the standalone checkout; a detached copy of
+those files plus only the package's own linked documentation/source/test tree passes
+the same checks without Factory access. The root file and backlog have no absolute
+machine paths, Factory references, missing external improvement IDs, required
+milestone/master-plan files or imported consumer skills. Manual consistency review
+confirmed autonomous in-scope work and backlog authorization rules agree; proposals
+remain proposals; sequential/recovery/verification boundaries preserve existing
+behavior. Existing operational documentation tests pass (2 tests, 3 subtests).
+All 19 runtime module hashes remain identical, and Factory AGENTS/skills/backlog
+workflow hashes remain unchanged. No runtime code, packaging, dependencies, CLI,
+production state or provider sessions are modified or exercised by this addendum.
+The full runtime suites recorded earlier were not rerun for documentation-only work.
+Audit metadata, classifications, source hashes and validation details are recorded
+outside Git in `C:/hustle/orchestrator-migration-evidence/instruction-audit.json` and
+`instruction-validation.json`. Follow-up local commit IDs are appended to the
+delivered `FINAL_REPORT.md` after verified commits; no remote push is performed.
