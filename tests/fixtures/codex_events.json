@@ -1,0 +1,69 @@
+[
+  {
+    "method": "item/completed",
+    "params": {
+      "item": {
+        "type": "agentMessage",
+        "id": "recorded-item",
+        "text": "I\u2019ll read `message.txt`, create `summary.json`, then run an independent Python check against the required object.",
+        "phase": "commentary",
+        "memoryCitation": null,
+        "delivery": null,
+        "questions": null,
+        "startedAtMs": 1793461203437,
+        "completedAtMs": 1793461203886
+      },
+      "threadId": "recorded-session",
+      "turnId": "recorded-turn",
+      "completedAtMs": 1793461203886
+    }
+  },
+  {
+    "method": "item/completed",
+    "params": {
+      "item": {
+        "type": "agentMessage",
+        "id": "recorded-item",
+        "text": "{\"status\":\"done\",\"diagnostic\":\"Created summary.json from message.txt with its trailing newline removed. Ran independent check_summary.py; JSON parsing and exact object equality passed.\",\"validators\":[{\"command\":[\"{python}\",\"check_summary.py\"],\"criteria\":[0,1],\"timeout\":120}]}",
+        "phase": "final_answer",
+        "memoryCitation": null,
+        "delivery": null,
+        "questions": null,
+        "startedAtMs": 1793461215017,
+        "completedAtMs": 1793461215893
+      },
+      "threadId": "recorded-session",
+      "turnId": "recorded-turn",
+      "completedAtMs": 1793461215893
+    }
+  },
+  {
+    "method": "turn/completed",
+    "params": {
+      "threadId": "recorded-session",
+      "turn": {
+        "id": "recorded-turn",
+        "rootTurnId": "01a1929e-2337-7f93-b94c-307e3c820d0a",
+        "items": [
+          {
+            "type": "agentMessage",
+            "id": "msg_003dd0606aae7565016ae60bdfd8248191b21bd3c6b1a4eb29",
+            "text": "{\"status\":\"done\",\"diagnostic\":\"Created summary.json from message.txt with its trailing newline removed. Ran independent check_summary.py; JSON parsing and exact object equality passed.\",\"validators\":[{\"command\":[\"{python}\",\"check_summary.py\"],\"criteria\":[0,1],\"timeout\":120}]}",
+            "phase": "final_answer",
+            "memoryCitation": null,
+            "delivery": null,
+            "questions": null,
+            "startedAtMs": 1793461215017,
+            "completedAtMs": 1793461215893
+          }
+        ],
+        "itemsView": "summary",
+        "status": "completed",
+        "error": null,
+        "startedAt": 1793461199,
+        "completedAt": 1793461215,
+        "durationMs": 16277
+      }
+    }
+  }
+]

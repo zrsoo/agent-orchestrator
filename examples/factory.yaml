@@ -1,0 +1,5 @@
+provider: codex
+providers:
+  codex:
+    model: default
+    execution_mode: yolo

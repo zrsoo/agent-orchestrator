@@ -1,0 +1,3 @@
+Create message.txt containing exactly Hello, orchestrator! followed by a newline.
+Then create summary.json with a message field equal to the message without its newline.
+Use two tasks; the second depends on the first. Create independent Python artifact checks for each.

@@ -1,0 +1,573 @@
+{
+  "source_revision": "51b7e53a1bb5e0de6d79df36f251127bac949d26",
+  "source_branch": "main",
+  "initial_status": "",
+  "files": [
+    {
+      "source": "orchestrator/README.md",
+      "destination": "README.md",
+      "disposition": "migrated",
+      "sha256": "b878463cb68af5af25db2dda3e609aa96a2c7870832e71055957739ca7745181",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "4ec59c8af258f4a16d4ed89fe4c2128de86f0a7c213b046ee84efba4a1c32501",
+      "byte_identical": false
+    },
+    {
+      "source": "orchestrator/examples/objective.txt",
+      "destination": "examples/objective.txt",
+      "disposition": "migrated",
+      "sha256": "791f2c65247709dbe1df8f87d1346c779dfb8002ea59d747c584ab8946a54b25",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "791f2c65247709dbe1df8f87d1346c779dfb8002ea59d747c584ab8946a54b25",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/examples/task.yaml",
+      "destination": "examples/task.yaml",
+      "disposition": "migrated",
+      "sha256": "5e61224947bfb5aa090c79edec37989da58662f7d161b32718c87afd3b52bd94",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "5e61224947bfb5aa090c79edec37989da58662f7d161b32718c87afd3b52bd94",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/pyproject.toml",
+      "destination": "pyproject.toml",
+      "disposition": "migrated",
+      "sha256": "01fd81844dfdb9532c6375ac99eec6dc4797839b676e02ba1728bfc366c2b7b2",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "01fd81844dfdb9532c6375ac99eec6dc4797839b676e02ba1728bfc366c2b7b2",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/__init__.py",
+      "destination": "src/agent_orchestrator/__init__.py",
+      "disposition": "migrated",
+      "sha256": "ee769325dc6790e3fe0dacb52d6dc8ed278e6a1a261723b667327bc8c3e4ab1f",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "ee769325dc6790e3fe0dacb52d6dc8ed278e6a1a261723b667327bc8c3e4ab1f",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/__main__.py",
+      "destination": "src/agent_orchestrator/__main__.py",
+      "disposition": "migrated",
+      "sha256": "482b8693e2fe6dbd732e3d7961e03827d3efa187bad11d29da188be580ebbeea",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "482b8693e2fe6dbd732e3d7961e03827d3efa187bad11d29da188be580ebbeea",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/backends/__init__.py",
+      "destination": "src/agent_orchestrator/backends/__init__.py",
+      "disposition": "migrated",
+      "sha256": "601224d937fafa2a438c42acab258746f9a36c8abe62db0bb37153e291b6b071",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "601224d937fafa2a438c42acab258746f9a36c8abe62db0bb37153e291b6b071",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/backends/base.py",
+      "destination": "src/agent_orchestrator/backends/base.py",
+      "disposition": "migrated",
+      "sha256": "0f6ad6ea9043d633e4feed60008a10104ce02c9d89af9199ac9cd9c3576474f3",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "0f6ad6ea9043d633e4feed60008a10104ce02c9d89af9199ac9cd9c3576474f3",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/backends/codex.py",
+      "destination": "src/agent_orchestrator/backends/codex.py",
+      "disposition": "migrated",
+      "sha256": "b7f0fd150b9e3e3de4b3aa1d382e494d653658a4e804232bf86b23bf508a91a7",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "b7f0fd150b9e3e3de4b3aa1d382e494d653658a4e804232bf86b23bf508a91a7",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/cli.py",
+      "destination": "src/agent_orchestrator/cli.py",
+      "disposition": "migrated",
+      "sha256": "ae9553dd6694a6fea15bf9b438651c6577cd9a116f11d8f57b49964711cba78c",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "ae9553dd6694a6fea15bf9b438651c6577cd9a116f11d8f57b49964711cba78c",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/dashboard.py",
+      "destination": "src/agent_orchestrator/dashboard.py",
+      "disposition": "migrated",
+      "sha256": "beee2bc6c1c0781ed47f4b5fe71652a740cf77b690c0388d9e22661906fa804d",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "beee2bc6c1c0781ed47f4b5fe71652a740cf77b690c0388d9e22661906fa804d",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/database.py",
+      "destination": "src/agent_orchestrator/database.py",
+      "disposition": "migrated",
+      "sha256": "c137d067ec6370e6172089617df99f00fceae6c88e83f824ba38e96dd4a7bee1",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "c137d067ec6370e6172089617df99f00fceae6c88e83f824ba38e96dd4a7bee1",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/executor.py",
+      "destination": "src/agent_orchestrator/executor.py",
+      "disposition": "migrated",
+      "sha256": "83967cf19af01555fcce6032245bcfe8383d170399d89bfea08c1b2e703f38a6",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "83967cf19af01555fcce6032245bcfe8383d170399d89bfea08c1b2e703f38a6",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/models.py",
+      "destination": "src/agent_orchestrator/models.py",
+      "disposition": "migrated",
+      "sha256": "ac11bf003067fb26eb831bec3bceb6b850d837ef3cebee5bab920264e1fa69d1",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "ac11bf003067fb26eb831bec3bceb6b850d837ef3cebee5bab920264e1fa69d1",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/processes.py",
+      "destination": "src/agent_orchestrator/processes.py",
+      "disposition": "migrated",
+      "sha256": "31a9bb5fc5c9d8d22c78856c77538256e21c1059ab06c5b6c6c653c26ec93350",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "31a9bb5fc5c9d8d22c78856c77538256e21c1059ab06c5b6c6c653c26ec93350",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/prompts.py",
+      "destination": "src/agent_orchestrator/prompts.py",
+      "disposition": "migrated",
+      "sha256": "9c4b751c92cf1a8f11970d628c47d08b90260e08bea3d456b872ef3aaeb39554",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "9c4b751c92cf1a8f11970d628c47d08b90260e08bea3d456b872ef3aaeb39554",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/quota.py",
+      "destination": "src/agent_orchestrator/quota.py",
+      "disposition": "migrated",
+      "sha256": "108110f19ea5d95061c82f5991a5e48b5d6b7a84975fb3fd2ff70c9cddb0ccad",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "108110f19ea5d95061c82f5991a5e48b5d6b7a84975fb3fd2ff70c9cddb0ccad",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/recovery.py",
+      "destination": "src/agent_orchestrator/recovery.py",
+      "disposition": "migrated",
+      "sha256": "937180efa3a1be7e9ec11bcc1069fd89b357beae84361a4be69b94b438041d13",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "937180efa3a1be7e9ec11bcc1069fd89b357beae84361a4be69b94b438041d13",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/scheduler.py",
+      "destination": "src/agent_orchestrator/scheduler.py",
+      "disposition": "migrated",
+      "sha256": "8866143d16ecfccebd4bc01748cc40339e3527ce6e565f9ee9c624a62b6e9a92",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "8866143d16ecfccebd4bc01748cc40339e3527ce6e565f9ee9c624a62b6e9a92",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/service.py",
+      "destination": "src/agent_orchestrator/service.py",
+      "disposition": "migrated",
+      "sha256": "719185b530a39ce9581687d9be17ac679e2767b30072ca488b7da84507f241f3",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "719185b530a39ce9581687d9be17ac679e2767b30072ca488b7da84507f241f3",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/terminal.py",
+      "destination": "src/agent_orchestrator/terminal.py",
+      "disposition": "migrated",
+      "sha256": "87525414b3a2b19551332f20c75100c4cbc02e8d5e4ca98b8b54868e940de590",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "87525414b3a2b19551332f20c75100c4cbc02e8d5e4ca98b8b54868e940de590",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/validation.py",
+      "destination": "src/agent_orchestrator/validation.py",
+      "disposition": "migrated",
+      "sha256": "7926f2eb926bf538cd1e5211c136703c3a9a4e328b1940daa2a9a70a2ab5923e",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "7926f2eb926bf538cd1e5211c136703c3a9a4e328b1940daa2a9a70a2ab5923e",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/src/agent_orchestrator/viewport.py",
+      "destination": "src/agent_orchestrator/viewport.py",
+      "disposition": "migrated",
+      "sha256": "a830ee873320c467f0f3911f5857340c33721fac4f4c00db645456467c82c156",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "a830ee873320c467f0f3911f5857340c33721fac4f4c00db645456467c82c156",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/app_server.py",
+      "destination": "tests/fixtures/app_server.py",
+      "disposition": "migrated",
+      "sha256": "cf2d342f846a8f0470e7ee5c4bf806621742203d1096f8f46c8429833d8bf75e",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "cf2d342f846a8f0470e7ee5c4bf806621742203d1096f8f46c8429833d8bf75e",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/codex_events.json",
+      "destination": "tests/fixtures/codex_events.json",
+      "disposition": "migrated",
+      "sha256": "b5ee76d1b9f4e708118fc95e86096222e6c5cfecb4d6f90b0ada538a67d1d63c",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "b5ee76d1b9f4e708118fc95e86096222e6c5cfecb4d6f90b0ada538a67d1d63c",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/conpty.py",
+      "destination": "tests/fixtures/conpty.py",
+      "disposition": "migrated",
+      "sha256": "bd152d1bf2a4eecfa60699fd3121c05cf2bf5b367dae1a37eafe7c1c3ccfdcf0",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "bd152d1bf2a4eecfa60699fd3121c05cf2bf5b367dae1a37eafe7c1c3ccfdcf0",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/console_probe.py",
+      "destination": "tests/fixtures/console_probe.py",
+      "disposition": "migrated",
+      "sha256": "c336278355e0cc7546367c0d1fdcc8257d9945c483d0fda551e8b6c6ae798f83",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "c336278355e0cc7546367c0d1fdcc8257d9945c483d0fda551e8b6c6ae798f83",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/m1_app_server.py",
+      "destination": "tests/fixtures/m1_app_server.py",
+      "disposition": "migrated",
+      "sha256": "7e929e5026a68075744e5802fbda95bebb9e28f73ecbefc3c5d77284eae5c11c",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "7e929e5026a68075744e5802fbda95bebb9e28f73ecbefc3c5d77284eae5c11c",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/m1_blocked_display.py",
+      "destination": "tests/fixtures/m1_blocked_display.py",
+      "disposition": "migrated",
+      "sha256": "3cc56ab1a91d2197bcc318556e1a5f31ed288719c0438d86e9126a3575398b6b",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "3cc56ab1a91d2197bcc318556e1a5f31ed288719c0438d86e9126a3575398b6b",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/m1_console.py",
+      "destination": "tests/fixtures/m1_console.py",
+      "disposition": "migrated",
+      "sha256": "aa66b141cb941c5c797d50a09a4d20d2751e81e080bf613655c8c79a043275d1",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "aa66b141cb941c5c797d50a09a4d20d2751e81e080bf613655c8c79a043275d1",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/m1_console_input.py",
+      "destination": "tests/fixtures/m1_console_input.py",
+      "disposition": "migrated",
+      "sha256": "603bb7b5a5fd0ef3bf7cc00c1a36333ad35b7ac6346e90e9465e1bb45a067264",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "603bb7b5a5fd0ef3bf7cc00c1a36333ad35b7ac6346e90e9465e1bb45a067264",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/fixtures/m1_scroll_console.py",
+      "destination": "tests/fixtures/m1_scroll_console.py",
+      "disposition": "migrated",
+      "sha256": "a773827026a54c6f97e5d217cddcf0c5480c38f506f1bf6277f2f32395cfbb22",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "a773827026a54c6f97e5d217cddcf0c5480c38f506f1bf6277f2f32395cfbb22",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/polling.py",
+      "destination": "tests/polling.py",
+      "disposition": "migrated",
+      "sha256": "642f158509e2e399d2da597909246063e4676c3d5b9c171ec47c35a27c3c9836",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "642f158509e2e399d2da597909246063e4676c3d5b9c171ec47c35a27c3c9836",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_dashboard.py",
+      "destination": "tests/test_dashboard.py",
+      "disposition": "migrated",
+      "sha256": "28ea6125f6af2bf8b31d9b820604bf80cfae6a0deab58e2fe27e609b65d973ec",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "28ea6125f6af2bf8b31d9b820604bf80cfae6a0deab58e2fe27e609b65d973ec",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_lifecycle.py",
+      "destination": "tests/test_lifecycle.py",
+      "disposition": "migrated",
+      "sha256": "3ca3ae7a2e4f092fd35c4a14c2a9c05569ea3f405790df7d82614aabde69d765",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "3ca3ae7a2e4f092fd35c4a14c2a9c05569ea3f405790df7d82614aabde69d765",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_live.py",
+      "destination": "tests/test_live.py",
+      "disposition": "migrated",
+      "sha256": "be2aa31c34a515d0d99933a2d69be09eaac80628e193edca7ff3dcfb73af0aea",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "be2aa31c34a515d0d99933a2d69be09eaac80628e193edca7ff3dcfb73af0aea",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_m0_publication.py",
+      "destination": "tests/orchestrator/test_m0_publication.py",
+      "disposition": "retained Roblox integration test",
+      "sha256": "a957e6ea3ac77d38f3a8307822bdf903f2ba9f24d2c201f71ce3e51f25d61130",
+      "repository": "roblox-factory",
+      "destination_sha256": "a957e6ea3ac77d38f3a8307822bdf903f2ba9f24d2c201f71ce3e51f25d61130",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_m0_recovery.py",
+      "destination": "tests/orchestrator/test_m0_recovery.py",
+      "disposition": "retained Roblox integration test",
+      "sha256": "8d5949cd66668c28ffbbc006891895128a5f83035af5d1b93df2ea39ad97b517",
+      "repository": "roblox-factory",
+      "destination_sha256": "8d5949cd66668c28ffbbc006891895128a5f83035af5d1b93df2ea39ad97b517",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_m1_cli.py",
+      "destination": "tests/test_m1_cli.py",
+      "disposition": "migrated",
+      "sha256": "6c83a4baff5abb8292e933d1bd4cc7a6187b448056efc6ecd3c1f55d494da6fa",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "6c83a4baff5abb8292e933d1bd4cc7a6187b448056efc6ecd3c1f55d494da6fa",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_m1_remediation.py",
+      "destination": "tests/test_m1_remediation.py",
+      "disposition": "migrated",
+      "sha256": "03a81cc694069b547cb904510b2098e33f7577ec94490dc7fb711060e0d9c8cb",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "03a81cc694069b547cb904510b2098e33f7577ec94490dc7fb711060e0d9c8cb",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_process.py",
+      "destination": "tests/test_process.py",
+      "disposition": "migrated",
+      "sha256": "d25272cb06a70e700470559cb98a76c991eb62747b7475e7bff20e7e5530429f",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "d25272cb06a70e700470559cb98a76c991eb62747b7475e7bff20e7e5530429f",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_recheck.py",
+      "destination": "tests/test_recheck.py",
+      "disposition": "migrated",
+      "sha256": "a508fcc393c6e72821e209da5de759085f9a9888fc81cd19ebdd10d21edc30df",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "a508fcc393c6e72821e209da5de759085f9a9888fc81cd19ebdd10d21edc30df",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_recovery_prompt.py",
+      "destination": "tests/test_recovery_prompt.py",
+      "disposition": "migrated",
+      "sha256": "2537a70b80111402e1d46966ef487970f0bd76ad281fb4ed0e69439ff1d18a72",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "2537a70b80111402e1d46966ef487970f0bd76ad281fb4ed0e69439ff1d18a72",
+      "byte_identical": true
+    },
+    {
+      "source": "orchestrator/tests/test_service.py",
+      "destination": "tests/test_service.py",
+      "disposition": "migrated",
+      "sha256": "7c08d013f9d4509bb0a27b914ba1275884a03ac80fce41e660b6a7d872807ef1",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "7c08d013f9d4509bb0a27b914ba1275884a03ac80fce41e660b6a7d872807ef1",
+      "byte_identical": true
+    },
+    {
+      "source": "scripts/test_m1_integrated_cli.py",
+      "destination": "scripts/test_m1_integrated_cli.py",
+      "disposition": "migrated runner; paths adapted",
+      "sha256": "06fdd0edc081a6ce9cb0b7f409ee20f18eb3f0107b8322d8ef0bb156720b8a8a",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "e3db1fe73878a2a79ce50406a12fca9a46d2ac9106295415ca44f8e6e6675509",
+      "byte_identical": false
+    },
+    {
+      "source": "scripts/test_m1_recheck_startup.py",
+      "destination": "scripts/test_m1_recheck_startup.py",
+      "disposition": "migrated runner; paths adapted",
+      "sha256": "b46365f6bbb8b8befa6132502561a4ffc86af67c02d59b25f9fb6fcc37556019",
+      "repository": "agent-orchestrator",
+      "destination_sha256": "2369e4df642dadc70d269db4d3b93c8ea038fb97bf9ecabd2cd13682d23793c7",
+      "byte_identical": false
+    }
+  ],
+  "factory_modified": [
+    {
+      "path": ".gitattributes",
+      "sha256": "22b063e343b8351745fb6f257fafba30e9659e68767ad7babda1b1e54f2be3a1",
+      "normalized_sha256": "22b063e343b8351745fb6f257fafba30e9659e68767ad7babda1b1e54f2be3a1",
+      "original_sha256": "9a9b86cfe005f8e04fe6de46a5f7d12fbd305e480cd7c313aa3b91d406a012a3"
+    },
+    {
+      "path": "improvements/M-1/IMP-002-git-task-regression-attribution.md",
+      "sha256": "c1397fe66ffaac32da97ba9bd95bdc4a608dfbca0d5f3c93bc428515770c801a",
+      "normalized_sha256": "baec144f1bc2d1f91f84c1ce311572104c3cc263977ae0e0fa768a926bea96e7",
+      "original_sha256": "8c9e0b9b012919ba2e00b43faf669b04f594b45bab1fe6b36574bdda4b170805"
+    },
+    {
+      "path": "improvements/M-1/IMP-003-plan-level-orchestration.md",
+      "sha256": "6bef0559f71d516086aa7058e2f63206d79b639f201df9d7ace08b4db48fe29e",
+      "normalized_sha256": "2e8909bd3ada6d1a2d519d4c8793128c682ac36f33277bb5ff83e709060a08ec",
+      "original_sha256": "7a92b248878a64db2966a6cfcdc8ddd9a6ee10b3b3b3ea566b5419a95f01a091"
+    },
+    {
+      "path": "improvements/M8/IMP-005-parallel-portfolio-execution.md",
+      "sha256": "4d9c27f1ebdb767ae015a9a88f48609626cc2c150a476c7d9c3a139375537087",
+      "normalized_sha256": "afa952d435f23951a9cb1b95fa6fe407b5343530522b0d37ff79ef49f91e893e",
+      "original_sha256": "1e3416779f56c2677203228f93beeb4471cd41d35f39289183b7827b9e605db6"
+    },
+    {
+      "path": "improvements/shared/IMP-001-remove-permanent-hash-gates.md",
+      "sha256": "2badbd7d284b534af6a355135ab9df9ad15d49539b8713f075dda447ac633351",
+      "normalized_sha256": "5714416f833177caa61867e0cd1ea9fbc2a25b5fbc0249bfa4cae193adacb8b6",
+      "original_sha256": "d913af32544e9b431f58a97c727ec72197c64852bb977c626692430e79b18ebd"
+    },
+    {
+      "path": "planning/M-1/EXECUTION_PLAN.md",
+      "sha256": "0b65b82e7d170124bb8a0c5b1a6ee06362d400141ffc7918c41c0b18c2809553",
+      "normalized_sha256": "9a5649270e753f77242b38d05a61a3519831a841e85304b66b9a983ea112b04a",
+      "original_sha256": "98be3d9c4937bcda452dbfc6cb207ab4cffe2fdc787e208ffa0b6f17007731a9"
+    },
+    {
+      "path": "planning/M1/EXECUTION_PLAN.md",
+      "sha256": "c75b86a879356b3d789facd0b4b884152f1f88d450d4c513ce6424fc2ab9a301",
+      "normalized_sha256": "d28606861da253a3b58625c756e2ca850c242c29d4f44b81509e18edd136300b",
+      "original_sha256": "f83abcfcee2163563bef165d4c82d42b48c701321e23a0ccf461764942c4bc0a"
+    },
+    {
+      "path": "planning/M1/INTEGRATION_PLAN.md",
+      "sha256": "997b9202fff54f5176fd48dda2e650a0b99c89e8a9b3ccb5e6beb023e2f78843",
+      "normalized_sha256": "bf860b6a4d7836e7b5e048b15ffcbf36db9d134dae337cfad1204e37160068a5",
+      "original_sha256": "2f8b0715f65d68e572c16dfa4083b048835c4529c97e13b4bff6a1f1217ae89a"
+    },
+    {
+      "path": "planning/M1/VERIFICATION.md",
+      "sha256": "f1380179d6463b4731ee18be8ef31e3519ea55d862c86700539307072354dedf",
+      "normalized_sha256": "865ab5df0f4edaf89877ca4e47459d606b9920488761c1fd457ea30dc6748ad3",
+      "original_sha256": "8cdcb133e12bd8b099ab3009379f2eb63174ea341621fed7b2fa43f52f54ad78"
+    },
+    {
+      "path": "planning/M2/EXECUTION_PLAN.md",
+      "sha256": "6792b5fb0a7126b8f356413e29e1c9397bfbc77a1dc4ff22de871db3f05ac6ad",
+      "normalized_sha256": "d9f1f6597d1e909aa4a277ad1c744453476ef7262fa448e1951797d646e99264",
+      "original_sha256": "cd7aadd777ed0c9332dd9528361f0e232d6220b051e29a34e203c36a606ec114"
+    },
+    {
+      "path": "planning/MASTER_PLAN.md",
+      "sha256": "4815ef19b6386280320a28d9e2c4a21ecac3301d8c64098029f55ba9d6de92cb",
+      "normalized_sha256": "b256851502077dad1c26547a389792e7c54459968e7ac79a3be7041a6dd85f63",
+      "original_sha256": "c209c9d0aa43e9cf59de2c6b4face8e7ed83f6365fe0b0fba8d1bb3415a19243"
+    },
+    {
+      "path": "scripts/m0_qa.py",
+      "sha256": "0cb079295a49207728164d7a3fe3e6d845beea13093c8787cb3dde7317b9d2bc",
+      "normalized_sha256": "221cc67e2de5f2e495feb8237a612c57b0f8d6a0f9d9ea5c6629c53dc3474863",
+      "original_sha256": "1671cb33cd9bef478aa982bcdc468ad06a220c1fdabc5732432baf824f0eea8a"
+    },
+    {
+      "path": "scripts/setup.md",
+      "sha256": "22fe4d4188ac5f4942522e9f0fb9a9b09058231d3504697877bb0f5bc33fad0e",
+      "normalized_sha256": "d58a89129c6087a82fa08138614d455c01d59c25ad214fe7efc923cabd00fe49",
+      "original_sha256": "87dc01fdd4d8442a7e9fda072a0eda46a999b4bcea1bb559fe2557ca1287b15b"
+    },
+    {
+      "path": "scripts/setup.ps1",
+      "sha256": "a04e136b71131a571a2dba02037b9baaa463e6c23dd7a50512e1746c39204d54",
+      "normalized_sha256": "a19462c858fbaf7a2207260dc5c22820885faa28af5d8a4336d7899016fcc030",
+      "original_sha256": "d4ed9d7fc4e2d896d8720e73734c4cc0659bde6d70ad3c60ae6b3097db8ad979"
+    },
+    {
+      "path": "scripts/test_m0_orchestrated_replays.py",
+      "sha256": "8d21da2eb0215d046cf9ad9d205a884bfdeb896c3dbfb99b2df5f345c1a0be38",
+      "normalized_sha256": "9f6766cd1faea50e5b81bd02ccce0cba9d2ff2a8f97354ca793b4cbb26131ddf",
+      "original_sha256": "84f3642edf4c3c7494c61a8250d85892e3886fdaeb82973641b03e93c61dace3"
+    },
+    {
+      "path": "scripts/test_m0_private_publication.py",
+      "sha256": "5360d9588d798faf395e5e5fd9319cd71d27d178d13b7990e90d0a70ebc762ce",
+      "normalized_sha256": "a6e1885f9c907ad98a8659f57bb337d316fb89c54c7051b67b11c98b80bb640e",
+      "original_sha256": "5df71ec04c38f6afa5490f9027809d1baf4a6d945578a724d53b1dddbcd2c96e"
+    },
+    {
+      "path": "scripts/test_m0_qa_and_skill.py",
+      "sha256": "9d95562325313f2eeb54a0023437371ffcc0e9832ddecb7ab713559b044282f9",
+      "normalized_sha256": "b591d1fa5cd4c87fd8c20227d41a4d3b38b5249b2ff653e943dc0db9145f4da9",
+      "original_sha256": "a1172c815a9c7f993afde72876ba450e643a2751b62e37b01a52516a1d133405"
+    },
+    {
+      "path": "scripts/test_m1_documentation.py",
+      "sha256": "9c79edd1361a141ee75c4ef4105d81cc2f142849ebed26b784ba456fd28b1247",
+      "normalized_sha256": "d6ec4ee773a086b5ed94ace9a2349bcc97371524394becfb4afc0c3c14175430",
+      "original_sha256": "3d8df4ec1b54a2fdfb55b66f85e869b43a6f999f3b31d8fc0ed9fa23b744d6cc"
+    },
+    {
+      "path": "scripts/test_m1_integrated_cli.py",
+      "sha256": "562d65a426fdc4369d5789a74dd4b78fef57a057b6d1f2208b8881db0ec69be9",
+      "normalized_sha256": "23936f42491b1772b36cbd09640a89fa39e75990ce9031dfcb27423de1e25943",
+      "original_sha256": "06fdd0edc081a6ce9cb0b7f409ee20f18eb3f0107b8322d8ef0bb156720b8a8a"
+    },
+    {
+      "path": "scripts/test_m1_integration_plan.py",
+      "sha256": "b765d56785f35aa88a475bd6ce5aa4e7593b2f0da1987c35c529a430ab022fad",
+      "normalized_sha256": "89b5665ddd94e96cbce4a5a3ec28e85b061d40118c1c99e3e40d61256eb571d2",
+      "original_sha256": "29ea97e1363969f11c633fe7895a292dec127edcf28f58bc32c2b747a1f697fb"
+    },
+    {
+      "path": "scripts/test_m1_recheck_startup.py",
+      "sha256": "5392dc357a80687576c3e9fc6b18dc5ac3a4b6b23d3c120dd0a8495c3f4f8904",
+      "normalized_sha256": "e2b1dcc0ce840235f6f3e99d0cfb0cecce06551f51b46aca649cfddf0a4b134d",
+      "original_sha256": "b46365f6bbb8b8befa6132502561a4ffc86af67c02d59b25f9fb6fcc37556019"
+    },
+    {
+      "path": "scripts/test_m2_final.py",
+      "sha256": "eb677db3fc73e67fee4bca4f58625d4af9e201a65fbc95e9eeb991b81e94133e",
+      "normalized_sha256": "647f95ac1daf53a23a70929bf0cf9fccf77b81580cdbf99287d8a1acd660e79e",
+      "original_sha256": "8c886289e264d6d57ca2bb02546495e3e371ee3b039b07af2dc8b9502c9414be"
+    },
+    {
+      "path": "scripts/test_m2_foundation.py",
+      "sha256": "69d82bc4837b87c5b2517c2801585d7d96a3c1d57ee7920e99196d447a0f91dd",
+      "normalized_sha256": "ec20f3ad38ffe00cb1a9eb7b6cdc36442c517772b000088b7c9bad7cf4b2ff59",
+      "original_sha256": "d6e58b84b4e6c61055e4f522489308df19ec8bd452707d2e314c6801d7377b11"
+    },
+    {
+      "path": "scripts/test_setup.ps1",
+      "sha256": "2268a865a48aef7544eb1452054b3aff58ff3519c34b290f3a9fe29badc00332",
+      "normalized_sha256": "25adff3b4cd6334b01a9bc46b4c409a703c04037b6598b8bf6668fcf83e0e880",
+      "original_sha256": "60b6b6739c852bdaef9c81be3952f30e4c69a6ac938d59c35787a0128b087e70"
+    }
+  ],
+  "historical_archive": {
+    "source": "scripts/test_m1_documentation.py",
+    "destination": "planning/M1/historical-acceptance/test_m1_documentation.py.txt",
+    "sha256": "3d8df4ec1b54a2fdfb55b66f85e869b43a6f999f3b31d8fc0ed9fa23b744d6cc"
+  },
+  "baseline_evidence_directory": "C:\\hustle\\orchestrator-migration-evidence"
+}

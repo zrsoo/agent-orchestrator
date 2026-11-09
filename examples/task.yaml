@@ -1,0 +1,6 @@
+id: write-message
+workspace: C:/Projects/orchestrator-example
+objective: Create message.txt containing Hello, orchestrator! and a Python artifact check.
+acceptance:
+  - message.txt contains exactly Hello, orchestrator! followed by a newline.
+depends_on: []

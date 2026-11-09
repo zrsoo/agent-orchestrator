@@ -1,0 +1,27 @@
+# Local environments, build products and test evidence
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+reports/
+.coverage
+htmlcov/
+# Runtime state and provider/account credentials never belong in Git
+.orchestrator/
+.m1-progress/
+*.db
+*.db-wal
+*.db-shm
+*.db.lock
+*.owner.json
+.codex/
+api_keys/
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.toml
