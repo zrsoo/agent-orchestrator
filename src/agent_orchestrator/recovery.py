@@ -12,6 +12,11 @@ def disrupted(db, key, diagnostic, blocked=False):
     previous = json.loads(episodes[0]['data']) if episodes else None
     no_progress = previous is not None and previous['files'] == files
     db.event(key, 'failure_episode', {'attempt': attempts, 'files': files, 'diagnostic': diagnostic})
+    obj = db.get('objective', row['objective_id'])
+    if obj['autonomous']:
+        from .operations import retry
+        retry(db, key, diagnostic, assessment=blocked)
+        return 'FIXING_PERSISTENT_FAILURE'
     state = 'BLOCKED' if blocked or (attempts >= 3 and no_progress) else 'FIXING_PERSISTENT_FAILURE' if attempts >= 2 else 'RUNNING'
     db.transition('task', key, state, diagnostic)
     return state

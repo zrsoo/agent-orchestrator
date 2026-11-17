@@ -14,6 +14,7 @@ Priorities: `P0` = next required assigned work; `P1` = near-term; `P2` = optiona
 | --- | --- | --- | --- | --- |
 | [IMP-002](IMP-002-git-task-regression-attribution.md) | Attribute regression evidence and Git commits to tasks | P0 | proposed | Next assigned provenance objective after verifying current checks accept legitimate changes |
 | [IMP-003](IMP-003-plan-level-orchestration.md) | Plan to dependent objectives to task DAGs | P2 | deferred | When measured objective handoff overhead justifies it |
+| [IMP-004](IMP-004-autonomous-recovery-before-blocking.md) | Assess autonomous recovery before escalating BLOCKED | P1 | done | Opt-in autonomous operational mode; existing objectives preserve their original policy |
 
 ## Working agreement
 

@@ -3,6 +3,7 @@ from dataclasses import asdict
 import json
 from pathlib import Path
 import time
+import uuid
 from .backends.base import InputSizeError, TransportError, QuotaExhausted
 from .backends.codex import CodexBackend
 from .executor import checkpoint
@@ -12,6 +13,7 @@ from .backends.base import Bucket, Quota
 from .recovery import disrupted
 from .prompts import check_prompt, recovery_summary
 from . import validation
+from . import operations
 
 
 def decode(text):
@@ -28,6 +30,9 @@ class Scheduler:
         self.backends = {}
         self.recovered = False
         self.output = output
+        self.epoch = uuid.uuid4().hex
+        self.monotonic = time.monotonic
+        self.consumers = []
 
     def backend(self, obj):
         # Configuration is pinned at submission, including model/execution settings.
@@ -89,8 +94,12 @@ class Scheduler:
                 self.db.execute('UPDATE turn SET provider_turn=? WHERE id=?', (data['turn'], turn))
 
         try:
+            def control():
+                if obj['autonomous'] and table == 'task':
+                    self.operational_check(obj, self.db.get('task', key))
+                return self.controls(obj['id'], key if table == 'task' else None)
             outcome = backend.run(session, prompt, emit,
-                                  lambda: self.controls(obj['id'], key if table == 'task' else None))
+                                  control)
         except QuotaExhausted as exc:
             from .backends.base import Outcome
             self.db.execute("UPDATE turn SET status='quota',ended=?,result=? WHERE id=?", (time.time(), str(exc), turn))
@@ -121,6 +130,9 @@ class Scheduler:
 
     def plan(self, obj):
         key = obj['id']
+        if obj['autonomous']:
+            operations.plan(self.db, obj)
+            return
         backend = self.backend(obj)
         if not self.quota_ready(backend, 'objective', key):
             return
@@ -170,6 +182,12 @@ class Scheduler:
             self.db.transition('task', key, 'VALIDATING')
             ok, evidence = validation.run(self.db, key, spec['workspace'])
             if ok:
+                if obj['autonomous'] and obj['healthy_seconds']:
+                    op = operations.poll(self, obj, task, force=True)
+                    if op['healthy'] < obj['healthy_seconds']:
+                        self.db.execute('UPDATE task SET accepted_stage=NULL WHERE key=?', (key,))
+                        operations.retry(self.db, key, 'Resumed validation needs a new consecutive healthy interval')
+                        return
                 self.db.transition('task', key, 'COMPLETED')
                 return
             self.db.execute('UPDATE task SET accepted_stage=NULL WHERE key=?', (key,))
@@ -211,6 +229,9 @@ class Scheduler:
             prompt += '\nUnresolved failure evidence:\n' + task['diagnostic']
         if task['attempts'] >= 2:
             prompt += '\nFIXING_PERSISTENT_FAILURE: diagnose the root cause and use an alternative approach in this same worker. If no viable next action or owner input is required, return blocked.'
+        if obj['autonomous']:
+            prompt += operations.prompt(self.db, obj, task)
+            prompt += recovery_summary(self.db, obj, task) if task['session'] and state != 'RECONCILING' else ''
         outcome = self.turn(obj, 'task', key, spec['workspace'], prompt, state)
         if self.controls(obj['id'], key) == 'stop':
             return
@@ -222,6 +243,11 @@ class Scheduler:
             return
         try:
             result = decode(outcome.text)
+            if obj['autonomous'] and self.controls(obj['id'], key) == 'pause':
+                operations.retry(self.db, key, 'Paused before handoff; reconcile saved turn result on resume')
+                return
+            if obj['autonomous'] and operations.handoff(self, obj, task, result):
+                return
             if result['status'] == 'blocked':
                 if result.get('blocker_check') is not None:
                     check = validation.check_spec(result['blocker_check'])
@@ -240,6 +266,11 @@ class Scheduler:
             return
         self.db.transition('task', key, 'VALIDATING')
         ok, evidence = validation.run(self.db, key, spec['workspace'])
+        if ok and obj['autonomous'] and obj['healthy_seconds']:
+            op = operations.poll(self, obj, self.db.get('task', key), force=True)
+            if op['healthy'] < obj['healthy_seconds']:
+                operations.retry(self.db, key, 'Final validation crossed a health discontinuity; inspect retained evidence')
+                return
         checkpoint(self.db, key, spec['workspace'], 'validated' if ok else 'validation_failed')
         if ok:
             self.db.execute("UPDATE task SET attempts=0,diagnostic='',accepted_stage='validated' WHERE key=?", (key,))
@@ -247,9 +278,28 @@ class Scheduler:
         else:
             disrupted(self.db, key, evidence)
 
+    def operational_check(self, obj, task):
+        op = operations.row(self.db, task['key'])
+        if self.controls(obj['id'], task['key']):
+            if op['monitor'] and op['pending'] != 'Explicit control: consumer stopped':
+                spec = json.loads(op['monitor'])
+                operations.stop(self.db, task['key'], json.loads(task['spec'])['workspace'],
+                                spec, 'explicit pause/stop')
+                self.db.execute('UPDATE operation SET pending=?,healthy=0,last_mono=NULL WHERE task_key=?',
+                                ('Explicit control: consumer stopped', task['key']))
+            return operations.row(self.db, task['key'])
+        return operations.poll(self, obj, task)
+
     def tick(self):
         if not self.recovered:
             self.recover()
+        # Controls and deterministic monitoring must not depend on AI quota.
+        for task in self.db.rows('''SELECT t.* FROM task t JOIN objective o ON o.id=t.objective_id
+                                   WHERE o.autonomous=1 AND t.state!='COMPLETED' '''):
+            obj = self.db.get('objective', task['objective_id'])
+            if obj['state'] == 'BLOCKED' and not self.controls(obj['id'], task['key']):
+                continue
+            self.operational_check(obj, task)
         for obj in self.db.rows("SELECT * FROM objective WHERE state NOT IN ('COMPLETED','BLOCKED','STOPPED') ORDER BY created"):
             key = obj['id']
             control = self.controls(key)
@@ -276,6 +326,12 @@ class Scheduler:
                 for task in sorted(tasks, key=lambda t: not bool(t['recheck'])):
                     if task['state'] in TERMINAL or self.controls(key, task['key']):
                         continue
+                    if obj['autonomous']:
+                        op = operations.row(self.db, task['key'])
+                        if task['state'] == 'MONITORING' and not op['pending']:
+                            continue
+                        if op['pending'] and op['retry_at'] > time.time():
+                            continue
                     deps = self.db.rows('SELECT depends_key FROM dependency WHERE task_key=?', (task['key'],))
                     if any(states[d['depends_key']] != 'COMPLETED' for d in deps):
                         continue
@@ -299,18 +355,31 @@ class Scheduler:
             except InputSizeError as exc:
                 self.db.event(owner, 'input_rejected', {'error': str(exc), 'retryable': False,
                                                        'prior_diagnostic': self.db.get(table, owner)['diagnostic']})
-                self.db.transition(table, owner, 'BLOCKED', str(exc))
+                if obj['autonomous'] and table == 'task':
+                    operations.retry(self.db, owner, str(exc), delay=60)
+                else:
+                    self.db.transition(table, owner, 'BLOCKED', str(exc))
                 return True
             except TransportError as exc:
                 self.infra_failure(obj, table, owner, exc)
                 return True
             except (ValueError, OSError) as exc:
-                self.db.transition(table, owner, 'BLOCKED', str(exc))
+                if obj['autonomous'] and table == 'task':
+                    operations.retry(self.db, owner, str(exc), delay=10)
+                else:
+                    self.db.transition(table, owner, 'BLOCKED', str(exc))
                 return True
         return False
 
     def wait(self, seconds):
         delay = min(seconds, DEFAULT_POLL_SECONDS)
+        due = self.db.rows('''SELECT min(p.next_at) AS due FROM operation p JOIN task t ON t.key=p.task_key
+                             JOIN objective o ON o.id=t.objective_id
+                             WHERE p.monitor IS NOT NULL
+                               AND o.state NOT IN ('COMPLETED','BLOCKED','STOPPED','PAUSED')
+                               AND t.state NOT IN ('COMPLETED','BLOCKED','STOPPED','PAUSED')''')
+        if due and due[0]['due'] is not None:
+            delay = min(delay, max(.1, due[0]['due'] - time.time()))
         waiting = self.db.rows("SELECT data FROM event WHERE kind='quota' ORDER BY id DESC LIMIT 1")
         if waiting:
             raw = json.loads(waiting[0]['data'])

@@ -22,6 +22,8 @@ def parser():
     submit.add_argument('file', nargs='?')
     submit.add_argument('--text')
     submit.add_argument('--workspace', default=str(Path.cwd()))
+    submit.add_argument('--autonomous', action='store_true', help='persistent repair/monitor lifecycle')
+    submit.add_argument('--healthy-seconds', type=float, default=0, help='required consecutive monitored health')
     run = sub.add_parser('run')
     mode = run.add_mutually_exclusive_group()
     mode.add_argument('--detach', action='store_true')
@@ -54,7 +56,9 @@ def main(argv=None):
                 raise ValueError('only codex is installed; other adapters can be registered through Scheduler factories')
             workspace = Path(args.workspace).resolve()
             workspace.mkdir(parents=True, exist_ok=True)
-            print(db.submit(text, workspace, provider, config['providers'][provider]))
+            print(db.submit(text, workspace, provider, config['providers'][provider],
+                            autonomous=args.autonomous, healthy_seconds=args.healthy_seconds,
+                            source_file=str(Path(args.file).resolve()) if args.file else None))
         elif args.command == 'recheck':
             db.recheck(args.id)  # Commit before discovery/spawn; failures retain this request.
             try:

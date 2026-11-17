@@ -1,5 +1,6 @@
 """SQLite is the source of truth. Local IDs are scoped to objectives."""
 import json
+import math
 import sqlite3
 import time
 import uuid
@@ -52,6 +53,20 @@ class Database:
             for name in ('recheck', 'blocker_check'):
                 if name not in columns:
                     self.execute(f'ALTER TABLE task ADD COLUMN {name} TEXT')
+            columns = {r['name'] for r in self.execute('PRAGMA table_info(objective)')}
+            for name, declaration in (('autonomous', 'INTEGER NOT NULL DEFAULT 0'),
+                                      ('source_file', 'TEXT'),
+                                      ('healthy_seconds', 'REAL NOT NULL DEFAULT 0')):
+                if name not in columns:
+                    self.execute(f'ALTER TABLE objective ADD COLUMN {name} {declaration}')
+            self.execute('''CREATE TABLE IF NOT EXISTS operation (
+                task_key TEXT PRIMARY KEY REFERENCES task(key), monitor TEXT,
+                next_at REAL NOT NULL DEFAULT 0, retry_at REAL NOT NULL DEFAULT 0,
+                pending TEXT, assessment TEXT, faulted INTEGER NOT NULL DEFAULT 0,
+                healthy REAL NOT NULL DEFAULT 0, generation TEXT, last_mono REAL,
+                epoch TEXT, launch_id TEXT, startup_until REAL NOT NULL DEFAULT 0)''')
+            if 'startup_until' not in {r['name'] for r in self.execute('PRAGMA table_info(operation)')}:
+                self.execute('ALTER TABLE operation ADD COLUMN startup_until REAL NOT NULL DEFAULT 0')
             self.execute('CREATE INDEX IF NOT EXISTS event_owner_kind_id ON event(owner,kind,id)')
             self.execute('CREATE INDEX IF NOT EXISTS turn_owner_id ON turn(owner,id)')
             self.execute('COMMIT')
@@ -120,10 +135,15 @@ class Database:
             self.execute('ROLLBACK')
             raise
 
-    def submit(self, text, workspace, provider, config):
+    def submit(self, text, workspace, provider, config, *, autonomous=False,
+               source_file=None, healthy_seconds=0):
+        if not math.isfinite(healthy_seconds) or healthy_seconds < 0 or healthy_seconds and not autonomous:
+            raise ValueError('healthy_seconds requires autonomous mode and must be nonnegative')
         key = 'obj-' + uuid.uuid4().hex[:12]
-        self.execute('INSERT INTO objective(id,text,workspace,provider,config,state,created) VALUES(?,?,?,?,?,?,?)',
-                     (key, text, str(Path(workspace).resolve()), provider, json.dumps(config), 'PENDING', time.time()))
+        self.execute('''INSERT INTO objective(id,text,workspace,provider,config,state,created,
+                       autonomous,source_file,healthy_seconds) VALUES(?,?,?,?,?,?,?,?,?,?)''',
+                     (key, text, str(Path(workspace).resolve()), provider, json.dumps(config),
+                      'PENDING', time.time(), int(autonomous), source_file, healthy_seconds))
         self.event(key, 'submitted', {'provider': provider})
         return key
 

@@ -18,7 +18,7 @@ from .backends.codex import normalize_quota
 
 REFRESH_SECONDS = .25
 STYLES = {
-    'PENDING': ('[.]', 37), 'RUNNING': ('[>]', 36),
+    'PENDING': ('[.]', 37), 'RUNNING': ('[>]', 36), 'MONITORING': ('[o]', 32),
     'VALIDATING': ('[?]', 35), 'WAITING_QUOTA': ('[~]', 33),
     'RECONCILING': ('[<>]', 36), 'RETRYING': ('[R]', 33),
     'FIXING_PERSISTENT_FAILURE': ('[!]', 33), 'PAUSED': ('[||]', 33),
@@ -92,6 +92,7 @@ def next_step(row):
         'BLOCKED': f'Resolve the diagnostic, then run: orchestrator recheck {key}',
         'PAUSED': f'To continue, run: orchestrator resume {key}',
         'WAITING_QUOTA': 'Waiting for an authoritative quota reread; recovery is automatic.',
+        'MONITORING': 'Deterministic health checks run without AI quota; faults resume the saved worker.',
         'VALIDATING': 'Independent acceptance checks are running; wait for results.',
         'RECONCILING': 'Automatic recovery in the saved session; inspect uncertain side effects.',
         'RETRYING': 'Automatic infrastructure retry; inspect the diagnostic if failures persist.',

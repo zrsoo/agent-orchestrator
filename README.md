@@ -6,6 +6,9 @@ adapter. Task fields remain exactly those in
 [the task contract](docs/task-contract.md).
 No Roblox integration is implemented.
 
+For opt-in recurring repair and quota-free service monitoring, see
+[autonomous operational objectives](docs/autonomous-operations.md).
+
 ## Install and launch (PowerShell, repository root)
 
 Install Python 3.11+ and Git. For the Codex provider, install and authenticate the
