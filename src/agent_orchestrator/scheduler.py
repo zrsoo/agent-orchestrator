@@ -5,6 +5,7 @@ from pathlib import Path
 import time
 import uuid
 from .backends.base import InputSizeError, TransportError, QuotaExhausted
+from .backends.claude import ClaudeBackend
 from .backends.codex import CodexBackend
 from .executor import checkpoint
 from .models import graph, TERMINAL
@@ -26,7 +27,7 @@ def decode(text):
 class Scheduler:
     def __init__(self, db, factories=None, *, output=print):
         self.db = db
-        self.factories = factories or {'codex': CodexBackend}
+        self.factories = factories or {'codex': CodexBackend, 'claude': ClaudeBackend}
         self.backends = {}
         self.recovered = False
         self.output = output

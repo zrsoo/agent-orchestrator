@@ -6,11 +6,18 @@ from pathlib import Path
 import sys
 import time
 import yaml
+from .backends.claude import check_config as check_claude_config
 from .database import Database
 from .dashboard import Dashboard
 from .scheduler import Scheduler
 from .quota import DEFAULT_POLL_SECONDS
 from .service import OwnerProbe, ServiceLock, StartupError, ensure_running
+
+# Used when factory.yaml omits providers.<name>; the selected entry is pinned at submission.
+DEFAULT_PROVIDERS = {
+    'codex': {'model': 'default', 'execution_mode': 'yolo'},
+    'claude': {'model': 'claude-opus-5-5', 'effort': 'high', 'execution_mode': 'yolo'},
+}
 
 
 def parser():
@@ -50,13 +57,16 @@ def main(argv=None):
             if not text.strip():
                 raise ValueError('objective is empty')
             path = Path(args.config)
-            config = yaml.safe_load(path.read_text(encoding='utf-8-sig')) if path.exists() else {'provider': 'codex', 'providers': {'codex': {'model': 'default', 'execution_mode': 'yolo'}}}
+            config = yaml.safe_load(path.read_text(encoding='utf-8-sig')) if path.exists() else {'provider': 'codex'}
             provider = config['provider']
-            if provider != 'codex':
-                raise ValueError('only codex is installed; other adapters can be registered through Scheduler factories')
+            if provider not in DEFAULT_PROVIDERS:
+                raise ValueError(f'unknown provider {provider!r}; installed: {", ".join(DEFAULT_PROVIDERS)}')
+            settings = (config.get('providers') or {}).get(provider, DEFAULT_PROVIDERS[provider])
+            if provider == 'claude':
+                check_claude_config(settings)
             workspace = Path(args.workspace).resolve()
             workspace.mkdir(parents=True, exist_ok=True)
-            print(db.submit(text, workspace, provider, config['providers'][provider],
+            print(db.submit(text, workspace, provider, settings,
                             autonomous=args.autonomous, healthy_seconds=args.healthy_seconds,
                             source_file=str(Path(args.file).resolve()) if args.file else None))
         elif args.command == 'recheck':

@@ -1,8 +1,8 @@
 # Agent Orchestrator
 
 Python owns durable scheduling; `AgentBackend` owns provider sessions, turns,
-notifications, quota readings and interruption. Codex App Server is the initial
-adapter. Task fields remain exactly those in
+notifications, quota readings and interruption. Adapters: Codex App Server and
+[Claude Code](#claude-code-provider). Task fields remain exactly those in
 [the task contract](docs/task-contract.md).
 No Roblox integration is implemented.
 
@@ -13,6 +13,8 @@ For opt-in recurring repair and quota-free service monitoring, see
 
 Install Python 3.11+ and Git. For the Codex provider, install and authenticate the
 Codex CLI separately, keeping its account and session data in your user profile.
+For the Claude provider, install Claude Code (`npm install -g @anthropic-ai/claude-code`)
+and run `claude auth login`.
 Roblox Studio and Roblox Factory are not dependencies.
 
 ```powershell
@@ -118,8 +120,10 @@ process trees when Python exits, including an abrupt Python crash.
 ## Configuration and execution
 
 The consumer supplies `factory.yaml` in the current directory, or an explicit
-`--config` path, to select the provider globally. See [the example](examples/factory.yaml).
-If absent, the CLI uses the existing Codex default configuration. Its provider
+`--config` path, to select the provider globally (`codex` or `claude`). See
+[the Codex example](examples/factory.yaml) and [the Claude example](examples/factory-claude.yaml).
+If absent, the CLI uses the existing Codex default configuration. An omitted
+`providers.<name>` entry uses that provider's default. Provider
 configuration is copied into each objective at submission; later edits apply to
 new objectives. `model: default` uses the installed Codex default. Execution is
 unrestricted (`execution_mode: yolo`, approval policy `never`). Run in the intended
@@ -171,6 +175,40 @@ notifications wake the service; `resetsAt` bounds fallback waits; every admissio
 requires a fresh reading. Polling defaults to 60 seconds (`run --poll <seconds>`),
 capped at 60 seconds; quota notifications or an earlier reset can wake it sooner.
 No extra usage is purchased.
+
+### Claude Code provider
+
+`provider: claude` runs one headless `claude -p` process per turn
+(stream-json stdin/stdout, `--dangerously-skip-permissions`) in the task
+workspace, inside the provider job object. Defaults: `model: claude-opus-5-5`,
+`effort: high` (`low|medium|high|xhigh|max`), `execution_mode: yolo`. Optional:
+`executable` (path or argv; default `claude` on PATH), `turn_timeout` (seconds,
+default 7200), `env` (string map added to the child). Sessions are client-generated
+UUIDs: the first turn uses `--session-id`, later turns `--resume`; either flag is
+swapped once if the CLI reports the session missing/already present.
+
+The child never inherits `CLAUDE*`/`ANTHROPIC_*`/`AI_AGENT` variables except
+`CLAUDE_CONFIG_DIR`, so a host Claude session, proxy or API key cannot redirect
+authentication, model or effort; the CLI's own login is used. A full `claude-*`
+model ID and `effort` are enforced: the init event, every top-level response and
+this turn's main-thread entries in the CLI session transcript
+(`<CLAUDE_CONFIG_DIR or ~/.claude>/projects/*/<session>.jsonl`, read after exit)
+must report them. A mismatch stops the turn with a configuration error (legacy
+tasks block, autonomous tasks retry). `CLAUDE_CODE_SUBAGENT_MODEL` pins subagents.
+`claude/result` records `observed_effort`; an empty list means no transcript was
+found. Final JSON is the `result` text. Tool calls are recorded as `item/completed`
+events for recovery summaries; `claude/init`, `claude/rate_limit` and
+`claude/result` events keep the remaining evidence.
+
+Claude quota is observed only within turns; there is no pre-turn read, so it stays
+unknown until a rate-limit event or usage-limit error arrives. Each event's
+`unifiedWindows` (`five_hour`, `seven_day`; utilization is a 0–1 fraction) become
+`claude/<window>` buckets. Buckets have no
+headroom threshold (run to exhaustion). A `rejected` limit blocks admission until
+its `resetsAt` (or 300 seconds when absent), after which quota is unknown again and
+the next turn is the probe. Paid overage is never used: `isUsingOverage`
+interrupts the turn and waits for the plan reset. API 5xx/529 errors use
+infrastructure retries; "prompt is too long" is non-retryable input rejection.
 
 Transport crashes use separate infrastructure retry counters and bounded
 exponential delay (2–60 seconds). Interrupted work reconciles in the saved
@@ -227,10 +265,13 @@ $env:ORCHESTRATOR_RECOVERY_DB = (Resolve-Path .orchestrator/state.db).Path
 Remove-Item Env:ORCHESTRATOR_RECOVERY_DB
 $env:ORCHESTRATOR_LIVE = '1'
 .venv/Scripts/python -m pytest tests/test_live.py -q
+$env:ORCHESTRATOR_LIVE_CLAUDE = '1'
+.venv/Scripts/python -m pytest tests/test_live_claude.py -q
 ```
 
 The default suite uses an alternative provider, a real subprocess fault server
-and sanitized [recorded Codex events](tests/fixtures/codex_events.json). It covers
+and sanitized [recorded Codex events](tests/fixtures/codex_events.json), plus a
+real stream-json [Claude Code fixture](tests/fixtures/claude_cli.py). It covers
 DAG rejection, threshold boundaries, active-turn completion, exhaustion,
 notifications and elapsed-reset fallback with authoritative rereads, same-session
 reconciliation, killed worker, abrupt detached-Python restart, episode recovery,
@@ -254,11 +295,14 @@ detached planning plus a two-task DAG and pause/resume; kill a real provider
 process and reconcile; and inject exhaustion through a real `turn/interrupt`,
 wait, then reconcile in the same session after the injected reset. Actual account
 quota exhaustion and multi-hour waiting are simulated, not deliberately induced.
+The Claude live test consumes Claude quota: it completes a one-task objective with
+the default pinned model, checks every init event, then resumes the worker session
+from a new process.
 
-Deferred: additional real adapters, provider switching during a task, parallel
+Deferred: further real adapters, provider switching during a task, parallel
 workers, automatic Windows boot startup and Roblox M0. Alternative adapters can
 be injected with `Scheduler(db, {"provider": factory})`; no task, database or
-recovery changes are needed. The CLI exposes only the installed Codex provider.
+recovery changes are needed. The CLI exposes the installed Codex and Claude providers.
 
 ## External workspaces and state
 

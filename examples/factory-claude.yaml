@@ -1,0 +1,6 @@
+provider: claude
+providers:
+  claude:
+    model: claude-opus-5-5
+    effort: high
+    execution_mode: yolo
